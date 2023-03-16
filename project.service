@@ -1,0 +1,27 @@
+[Unit]
+Description=webApp
+After=cloud-final.service
+
+[Service]
+# Environment=DB_PORT=5432
+# Environment=APP_PORT=3000
+# Environment=DB_HOST=localhost
+# Environment=DB_USER=postgres
+# Environment=DB_PASSWORD=1234567890
+# Environment=DB_POSTGRESQL=postgres
+# Environment=DB_DIALECT=postgres
+
+# WorkingDirectory=/home/ec2-user/webApp/webApp
+# ExecStart=/usr/bin/node /home/ec2-user/webApp/webApp/server.js
+WorkingDirectory=/home/ec2-user/webApp
+ExecStart=/usr/bin/node /home/ec2-user/webApp/server.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=webApp
+User=ec2-user
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=cloud-init.target
